@@ -1,6 +1,6 @@
 import pytest
 
-from negocio import Calculadora
+from negocio.calculadora_neg import Calculadora
 
 class TestLaboratorio:
     calculadora = Calculadora()
