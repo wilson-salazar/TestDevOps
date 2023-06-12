@@ -22,6 +22,15 @@ def login():
     result["result"] = sum
     return jsonify(Suma=result), 200
 
+@app.route('/subs', methods=['POST'])
+def login():
+    print("REQUEST: ", request.json)
+    calc = Calculadora()
+    resta = calc.suma(request.json['num1'],request.json['num2'])
+    result = {}
+    result["result"] = resta
+    return jsonify(Resta=result), 200
+
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
