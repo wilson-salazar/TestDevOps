@@ -1,7 +1,26 @@
-# This is a sample Python script.
+from flask import Flask,request,jsonify
+from flask_cors import CORS
+from negocio.calculadora_neg import Calculadora
+# Activate
+app = Flask(__name__)
+# Apply CORS to this app
+CORS(app)
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+@app.route('/')
+def greeting():
+    return 'Hello world!'
+
+
+@app.route('/sum', methods=['POST'])
+def login():
+    print("REQUEST: ", request.json)
+    sum_object = request.json
+    calc = Calculadora()
+    sum = calc.suma(sum_object['sum1'],sum_object['sum1'])
+    result = {}
+    result["result"] = sum
+    return jsonify(Suma=result), 200
 
 
 def print_hi(name):
